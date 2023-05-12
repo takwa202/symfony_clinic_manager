@@ -1,0 +1,42 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}Ordonnance index{% endblock %}
+
+{% block body %}
+    <h1>Liste des ordonnances</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdOrdonnance</th>
+                <th>Date ajout</th>
+                <th>Mode Utilisation</th>
+                <th>Nom et prénom du patient</th>
+                <th>Médicaments</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ordonnance in ordonnances %}
+            <tr>
+                <td>{{ ordonnance.idOrdonnance }}</td>
+                <td>{{ ordonnance.dateajout }}</td>
+                <td>{{ ordonnance.modeUtilisation }}</td>
+                <td>{{ ordonnance.nomprenompatient }}</td>
+                <td>{{ ordonnance.idProduit.nomProd }}</td>
+                <td>
+                    <a href="{{ path('app_ordonnance_show', {'idOrdonnance': ordonnance.idOrdonnance}) }}">show</a>
+                    <a href="{{ path('app_ordonnance_edit', {'idOrdonnance': ordonnance.idOrdonnance}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ordonnance_new') }}">Create new</a>
+    <a href="{{ path('app_ordonnance_pdf') }}">Imprimer</a>
+{% endblock %}

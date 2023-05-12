@@ -1,0 +1,70 @@
+{% extends 'acceilpatient.html.twig' %}
+
+{% block title %}Symptome{% endblock %}
+
+{% block body %}
+    <h1>Symptome</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdSym</th>
+                <td>{{ symptome.idSym }}</td>
+            </tr>
+            <tr>
+                <th>Fievre</th>
+                <td>{{ symptome.fievre ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Toux</th>
+                <td>{{ symptome.toux }}</td>
+            </tr>
+            <tr>
+                <th>Fatigue</th>
+                <td>{{ symptome.fatigue }}</td>
+            </tr>
+            <tr>
+                <th>DouleurMusculaire</th>
+                <td>{{ symptome.douleurMusculaire }}</td>
+            </tr>
+            <tr>
+                <th>MalDeGorge</th>
+                <td>{{ symptome.malDeGorge }}</td>
+            </tr>
+            <tr>
+                <th>Essouflement</th>
+                <td>{{ symptome.essouflement }}</td>
+            </tr>
+            <tr>
+                <th>PerteDAppetit</th>
+                <td>{{ symptome.perteDAppetit }}</td>
+            </tr>
+            <tr>
+                <th>EcoulementNasal</th>
+                <td>{{ symptome.ecoulementNasal }}</td>
+            </tr>
+            <tr>
+                <th>Nausee</th>
+                <td>{{ symptome.nausee }}</td>
+            </tr>
+            <tr>
+                <th>Vomissement</th>
+                <td>{{ symptome.vomissement }}</td>
+            </tr>
+            <tr>
+                <th>MalDeTete</th>
+                <td>{{ symptome.malDeTete }}</td>
+            </tr>
+            <tr>
+                <th>Autre</th>
+                <td>{{ symptome.autre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_symptome_index') }}">back to list</a>
+
+    <a href="{{ path('app_symptome_edit', {'idSym': symptome.idSym}) }}">edit</a>
+
+    {{ include('symptome/_delete_form.html.twig') }}
+{% endblock %}

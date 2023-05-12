@@ -1,0 +1,51 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}FicheSuivi{% endblock %}
+
+{% block body %}
+    <h1>FicheSuivi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdFiche</th>
+                <td>{{ fiche_suivi.idFiche }}</td>
+            </tr>
+            <tr>
+                <th>Diagnostic</th>
+                <td>{{ fiche_suivi.diagnostic }}</td>
+            </tr>
+            <tr>
+                <th>ConsigneMedicale</th>
+                <td>{{ fiche_suivi.consigneMedicale }}</td>
+            </tr>
+            <tr>
+                <th>NomPatient</th>
+                <td>{{ fiche_suivi.idClient.nomPatient }}</td>
+            </tr>
+            <tr>
+                <th>PrénomPatient</th>
+                <td>{{ fiche_suivi.idClient.prénomPatient }}</td>
+            </tr>
+            <tr>
+                <th>TypeBilan</th>
+                <td>{{ fiche_suivi.bilan.type}}</td>
+            </tr>
+            <tr>
+                <th>DateBilan</th>
+                <td>{{ fiche_suivi.bilan.getDateBilanstring}}</td>
+            </tr>
+            <tr>
+                <th>ConclusionBilan</th>
+                <td>{{ fiche_suivi.bilan.conclusion}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_suivi_index') }}">retour à la liste d'affichage</a>
+
+    <a href="{{ path('app_fiche_suivi_edit', {'idFiche': fiche_suivi.idFiche}) }}">modifier</a>
+
+    {{ include('fiche_suivi/_delete_form.html.twig') }}
+{% endblock %}

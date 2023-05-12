@@ -1,0 +1,39 @@
+{% extends 'acceilpatient.html.twig' %}
+
+{% block title %}Liste des RendezVous{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdRd</th>
+                <th>DateRd</th>
+                <th>HeureRd</th>
+                <th>Medecin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rendez_vou in rendez_vouses %}
+            <tr>
+                <td>{{ rendez_vou.idRd }}</td>
+                <td>{{ rendez_vou.dateRd ? rendez_vou.dateRd|date('Y-m-d') : '' }}</td>
+                <td>{{ rendez_vou.heureRd }}</td>
+                <td>{{ rendez_vou.idMed.nomMed }}</td>
+
+                <td>
+                    <a href="{{ path('app_rendez_vous_edit', {'idRd': rendez_vou.idRd}) }}">Edit  </a>
+                    <a href="{{ path('app_rendez_vous_delete', {'idRd': rendez_vou.idRd}) }}">  Delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rendez_vous_new') }}">Create new</a>
+{% endblock %}

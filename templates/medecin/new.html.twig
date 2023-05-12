@@ -1,0 +1,11 @@
+{% extends 'acceiladmin.html.twig' %}
+
+{% block title %}New Medecin{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un Medecin</h1>
+
+    {{ include('medecin/_form.html.twig') }}
+
+    <a href="{{ path('app_medecin_index') }}">back to list</a>
+{% endblock %}

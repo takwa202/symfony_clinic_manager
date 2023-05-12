@@ -1,0 +1,72 @@
+
+    <div class="col-xl-6 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"></h4>
+            </div>
+            <div class="card-body">
+                 {{form_start(form,{'attr':{'class':'form-horizontal','novalidate':'novalidate'}})}}
+                 
+                <div class="basic-form">
+               <form>
+            <div class="row">
+        <div class="mb-3 col-md-6">
+        <label class="form-label">Nom </label>
+         {{ form_widget (form.nomMed,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors (form.nomMed) }}
+        </div>
+        <div class="mb-3 col-md-6">
+         <label class="form-label">prenom </label>
+         {{ form_widget (form.prenomMed,{'attr':{'class':'form-control'}}) }}
+                        {{ form_errors (form.prenomMed) }}
+
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">mail </label>
+         {{ form_widget (form.emailMed,{'attr':{'class':'form-control'}}) }}
+          {{ form_errors (form.emailMed) }}
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">password </label>
+         {{ form_widget (form.mdpMed,{'attr':{'class':'form-control'}}) }}
+                   {{ form_errors (form.mdpMed) }}
+
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">date de naissance </label>
+         {{ form_widget (form.dateNaissanceMed,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors (form.dateNaissanceMed) }}
+
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">age </label>
+         {{ form_widget (form.ageMed,{'attr':{'class':'form-control'}}) }}
+               {{ form_errors (form.ageMed) }}
+
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">adresse </label>
+         {{ form_widget (form.adresseMed,{'attr':{'class':'form-control'}}) }}
+                   <div>     {{ form_errors (form.adresseMed) }} </div>
+
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">genre </label>
+         {{ form_widget (form.genreMed,{'attr':{'class':'form-control'}}) }}
+         <div> {{ form_errors (form.genreMed) }}</div>
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">numero telephone </label>
+         {{ form_widget (form.numTelMed,{'attr':{'class':'form-control'}}) }}
+        </div>
+
+              </div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
+  </form>
+                </div>
+            </div>
+
+        </div>
+    </div>

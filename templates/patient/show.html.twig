@@ -1,0 +1,52 @@
+{% extends 'acceiladmin.html.twig' %}
+
+{% block title %}Patient{% endblock %}
+
+{% block body %}
+    <h1>Patient</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdPatient</th>
+                <td>{{ patient.idPatient }}</td>
+            </tr>
+            <tr>
+                <th>NomPatient</th>
+                <td>{{ patient.nomPatient }}</td>
+            </tr>
+            <tr>
+                <th>PrenomPatient</th>
+                <td>{{ patient.prenomPatient }}</td>
+            </tr>
+            <tr>
+                <th>EmailPatient</th>
+                <td>{{ patient.emailPatient }}</td>
+            </tr>
+            <tr>
+                <th>AdressPatient</th>
+                <td>{{ patient.adressPatient }}</td>
+            </tr>
+            <tr>
+                <th>NumtelPatient</th>
+                <td>{{ patient.numtelPatient }}</td>
+            </tr>
+           
+            <tr>
+                <th>AgePatient</th>
+                <td>{{ patient.agePatient }}</td>
+            </tr>
+            <tr>
+                <th>GendrePatient</th>
+                <td>{{ patient.gendrePatient }}</td>
+            </tr>
+          
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_patient_index') }}">back to list</a>
+
+   <!-- <a href="{{ path('app_patient_edit', {'idPatient': patient.idPatient}) }}">edit</a> -->
+
+    {{ include('patient/_delete_form.html.twig') }}
+{% endblock %}

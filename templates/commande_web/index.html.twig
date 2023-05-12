@@ -1,0 +1,45 @@
+{% extends 'acceilpatient.html.twig' %}
+
+{% block title %}CommandeWeb index{% endblock %}
+
+{% block body %}
+    <h1>Commande</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdComd</th>
+                <th>Quantite</th>
+                <th>Destination</th>
+                <th>DateComd</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_web in commande_webs %}
+            <tr>
+                <td>{{ commande_web.idComd }}</td>
+                <td>{{ commande_web.quantite }}</td>
+                <td>{{ commande_web.destination }}</td>
+                <td>{{ commande_web.dateComd ? commande_web.dateComd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_commande_web_show', {'idComd': commande_web.idComd}) }}">show</a>
+                    <a href="{{ path('app_commande_web_edit', {'idComd': commande_web.idComd}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+
+
+    </table>
+
+    <a href="{{ path('app_commande_web_new') }}">Create new</a>
+{% endblock %}
+
+

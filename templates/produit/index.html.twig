@@ -1,0 +1,257 @@
+{% extends 'acceilfarm.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12">
+    <div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Liste des Produits</h4>
+        <button type="button" style="position:relative;
+                     display:inline-block;
+                     float:right;
+                        margin-left: 40px;
+                        margin-right: 40px;
+                        margin-bottom: 50px;
+                        width:150px ;
+" class="btn btn-info"> <a style="color: cadetblue" href="{{path('tricat') }}"><i class="align-middle"></i> <b>Categories tris</b> </a></button>
+    </div>
+
+            {#  <form
+                  class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+
+                <div id="divs">
+                    <input type="text" id="search" class="form-control bg-light border-0 small" placeholder="find name" aria-label="Search" aria-describedby="basic-addon2">
+
+                </div>
+            </div>
+            </form>
+             <form
+                  class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+
+                    <div id="divs">
+                        <input type="text" id="search2" class="form-control bg-light border-0 small" placeholder="find description" aria-label="Search" aria-describedby="basic-addon2">
+
+                    </div>
+                </div>
+            </form>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary"><a class="tg-btn" href="" id="idup" >UP </a></button>
+                <button type="button" class="btn btn-secondary"><a class="tg-btn" href="" id="iddown">DOWN </a></button>
+            </div>#}
+
+
+
+    <table class="table table-hover" id="t">
+        <thead>
+            <tr>
+
+                <th>Nom Produit</th>
+                <th>Discription</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+                <th>Catégories</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="all">
+        {% for produit in produits %}
+            <tr>
+
+                <td>{{ produit.nomProd }}</td>
+                <td>{{ produit.discription }}</td>
+                <td>{{ produit.quantite }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.categories }}</td>
+                <td>
+                    <button class="btn btn-outline-primary"><a href="{{ path('app_produit_edit', {'idProd': produit.idProd}) }}">Modifier</a></button>
+                    <button class="btn btn-outline-danger"><a href="{{ path('app_produit_delete', {'idProd': produit.idProd}) }}">Supprimer</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tbody id="search">
+        </tbody>
+    </table>
+
+        <a href="{{ path('app_produit_new') }}">Create new</a>
+        <a href="{{ path('app_contact') }}"> Contact </a>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+        {# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+        <script>
+        $( document ).ready(function() {
+            /*begin rechercher avancee multicritéres selon sujet et staus*/
+            $("#divs").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $("#search").val();
+                var value2 = $("#search2").val();
+                if(value.length >= 2 || value.length == 0 || value2.length >= 2 || value2.length == 0  )
+                {
+                    //    alert(value);
+                    /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                    $.ajax({
+                        /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                        url : "{{ path('search_rec') }}",
+                        /* La méthode utilisée pour transférer les données est GET */
+                        type : 'GET',
+                        /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                        data: {
+                            'searchValue' : value,
+                            'searchValue2': value2
+                        },
+                        /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                        success : function(retour){
+                            if(retour){
+                                $('#t tbody#search').empty();
+                                $.each(JSON.parse(retour), function(i, obj) {
+                                    $('#t tbody#all').hide();
+                                    //     $('#t tbody#search').append('<tr><td> '+obj.idrec+'  </td><td>    '+obj.sujetrec+'  </td><td>'+obj.descriptionrec+' </td><td>'+obj.statusrec+' </td> <td>'+obj.daterec.substring(0,10) +' </td> <td>'+obj.datetraitement+' </td> <td>'+obj.nomprenomcoach+' </td> <td>'+obj.imgrec+' </td> <td> <a href="/reclamation/'+obj.idrec+'/edit">edit</a></td></tr>');
+                                    $('#t tbody#search').append('<tr> <td>    '+obj.nomProd+'  </td><td>'+obj.discription+'</td> <td>'+obj.quantite+' </td> <td>'+obj.prix+' </td>  <td>'+obj.categories+' </td>   </tr>');
+
+                                });
+                            }
+                            else
+                            {
+
+                                $('#t tbody#all').show();
+                                $('#t tbody#search').empty();
+                                $('#t tbody#search').fadeIn('fast');
+
+                            }
+                        },
+                    });
+                    return false;
+                }
+            });
+
+            /*end rechercher avancee multicritéres selon sujet et staus*/
+            /*begin trie up selon id*/
+            $("#idup").click(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $("#search").val();
+                var value2 = $("#search2").val();
+                var value3 ="ASC";
+                //    alert(value);
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                    url : "{{ path('search_rec') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value,
+                        'searchValue2': value2,
+                        'orderid': value3
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#t #tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr><td>    '+obj.nomProd+'  </td><td>'+obj.discription+'</td> <td>'+obj.quantite+' </td><td>'+obj.prix+' </td> <td>'+obj.categories+' </td> </tr>');
+
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+
+            });
+            /*end trie up selon id*/
+            /*begin trie down selon id*/
+            $("#iddown").click(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $("#search").val();
+                var value2 = $("#search2").val();
+                var value3 ="DESC";
+                //    alert(value);
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                    url : "{{ path('search_rec') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value,
+                        'searchValue2': value2,
+                        'orderid': value3
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr><td>    '+obj.nomProd+'  </td><td>'+obj.discription+'</td> <td>'+obj.quantite+' </td><td>'+obj.prix+' </td>  <td>'+obj.categories+' </td> </tr>');
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+
+            });
+            /*end trie down selon id*/
+        }); </script> #}
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script> #}

@@ -1,0 +1,34 @@
+{% extends 'acceilpatient.html.twig' %}
+
+{% block title %}RendezVous{% endblock %}
+
+{% block body %}
+    <h1>RendezVous</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdRd</th>
+                <td>{{ rendez_vou.idRd }}</td>
+            </tr>
+            <tr>
+                <th>DateRd</th>
+                <td>{{ rendez_vou.dateRd ? rendez_vou.dateRd|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureRd</th>
+                <td>{{ rendez_vou.heureRd }}</td>
+            </tr>
+            <tr>
+                <th>JourRestant</th>
+                <td>{{ rendez_vou.jourRestant }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rendez_vous_index') }}">back to list</a>
+
+    <a href="{{ path('app_rendez_vous_edit', {'idRd': rendez_vou.idRd}) }}">edit</a>
+
+    {{ include('rendez_vous/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'acceiladmin.html.twig' %}
+
+{% block title %}Patient index{% endblock %}
+
+{% block body %}
+    <h1>Patient index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>NomPatient</th>
+                <th>PrenomPatient</th>
+                <th>EmailPatient</th>
+                <th>AdressPatient</th>
+                <th>NumtelPatient</th>
+          
+                <th>AgePatient</th>
+                <th>GendrePatient</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+            <tr>
+           
+                <td>{{ patient.nomPatient }}</td>
+                <td>{{ patient.prenomPatient }}</td>
+                <td>{{ patient.emailPatient }}</td>
+                <td>{{ patient.adressPatient }}</td>
+                <td>{{ patient.numtelPatient }}</td>
+               
+                <td>{{ patient.agePatient }}</td>
+                <td>{{ patient.gendrePatient }}</td>
+                <td>
+                    <a href="{{ path('app_patient_show', {'idPatient': patient.idPatient}) }}">show</a>
+                      <!--   <a href="{{ path('app_patient_show', {'idPatient': patient.idPatient}) }}">ordonnance</a>
+                        <a href="{{ path('app_patient_show', {'idPatient': patient.idPatient}) }}">lettre</a>
+                         <a href="{{ path('app_patient_show', {'idPatient': patient.idPatient}) }}">fiche</a>
+                          <a href="{{ path('app_patient_show', {'idPatient': patient.idPatient}) }}">bilan</a> --> 
+              <!--   <a href="{{ path('app_patient_edit', {'idPatient': patient.idPatient}) }}">edit</a> -->
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

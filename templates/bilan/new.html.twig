@@ -1,0 +1,14 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}New Bilan{% endblock %}
+
+{% block body %}
+    <div style="background-color : #FFC0CB"> <h1>Créer un nouveau Bilan</h1> </div>
+
+
+    {{ include('bilan/_form.html.twig') }}
+
+
+    <button name="button"><a href="{{ path('app_bilan_index') }}">retour </a></button>
+
+{% endblock %}

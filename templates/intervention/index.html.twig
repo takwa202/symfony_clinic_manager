@@ -1,0 +1,66 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}Intervention index{% endblock %}
+
+{% block body %}
+    <h1>Intervention index</h1>
+  
+<div id="calendrier" style="width : 80%;">
+
+
+
+</div>
+ <a href="{{ path('app_intervention_new') }}">Create new</a>
+
+  {% endblock %} 
+{% block javascripts %}
+
+<script>
+window.onload=()=>{
+let calendarEl= document.querySelector("#calendrier")
+let calender = new FullCalendar.Calendar(calendarEl,{
+    initialView: 'dayGridMonth',
+    headerToolbar:{
+        start:'prev,next today',
+       end:'dayGridMonth,timeGridWeek'
+    
+    },
+    events:{{data|raw}},
+    editable:true,
+     eventResizableFromStart:true,
+})
+calender.on('eventChange',(e)=>{
+
+var url= `/intervention/${e.event.id}/edit`
+
+var donnees ={
+  
+    
+    "description":e.event.extendedProps.description,
+    "start":new Date(e.event.start),
+    "end":new Date(e.event.end),
+    "backgroundcolor":e.event.backgroundcolor,
+    "bordercolor":e.event.borderColor,
+    "textcouleur":e.event.textColor,
+
+}
+var darte = new Date(e.event.start)
+ var FD  = new FormData()
+ FD.append('name','hii')
+ let xhr = new XMLHttpRequest()
+ xhr.open("GET", url, true)
+xhr.setRequestHeader("X-Requested-With","XMLHttpRequest");
+console.log(JSON.stringify(FD))
+  xhr.send(JSON.stringify(darte ))
+   console.log(FD);
+
+   
+}
+)
+calender.render()
+}
+
+
+</script>
+{% endblock %}
+

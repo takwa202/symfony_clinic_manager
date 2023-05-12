@@ -1,0 +1,12 @@
+{% extends 'acceilpatient.html.twig' %}
+
+{% block title %}Modifier votre RendezVous{% endblock %}
+
+{% block body %}
+
+    {{ include('rendez_vous/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_rendez_vous_index') }}">back to list</a>
+
+    {{ include('rendez_vous/_delete_form.html.twig') }}
+{% endblock %}

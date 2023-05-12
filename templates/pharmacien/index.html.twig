@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pharmacien index{% endblock %}
+
+{% block body %}
+    <h1>Pharmacien index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdPharmacien</th>
+                <th>NomPharmacien</th>
+                <th>PrenomPharmacien</th>
+                <th>AdressPharmacien</th>
+                <th>NumtelPharmacien</th>
+                <th>MotdepassePharmacien</th>
+                <th>EmailPharmacien</th>
+                <th>Blockfarm</th>
+                <th>Picturepharm</th>
+                <th>Nbrreclamation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pharmacien in pharmaciens %}
+            <tr>
+                <td>{{ pharmacien.idPharmacien }}</td>
+                <td>{{ pharmacien.nomPharmacien }}</td>
+                <td>{{ pharmacien.prenomPharmacien }}</td>
+                <td>{{ pharmacien.adressPharmacien }}</td>
+                <td>{{ pharmacien.numtelPharmacien }}</td>
+                <td>{{ pharmacien.motdepassePharmacien }}</td>
+                <td>{{ pharmacien.emailPharmacien }}</td>
+                <td>{{ pharmacien.blockfarm ? 'Yes' : 'No' }}</td>
+                <td>{{ pharmacien.picturepharm }}</td>
+                <td>{{ pharmacien.nbrreclamation }}</td>
+                <td>
+                    <a href="{{ path('app_pharmacien_show', {'idPharmacien': pharmacien.idPharmacien}) }}">show</a>
+                    <a href="{{ path('app_pharmacien_edit', {'idPharmacien': pharmacien.idPharmacien}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pharmacien_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}Edit Bilan{% endblock %}
+
+{% block body %}
+    <div style="background-color : #FFC0CB"> <h1>Modifier Bilan</h1> </div>
+
+
+    <button type="button" class="btn btn-light"> {{ include('bilan/_form.html.twig', {'button_label': 'Mettre à jour'}) }}</button>
+
+    <button type="button" class="btn btn-light"> <a href="{{ path('app_bilan_index') }}">retour à la liste d'affichage</a></button>
+
+    {{ include('bilan/_delete_form.html.twig') }}
+{% endblock %}

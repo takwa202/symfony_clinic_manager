@@ -1,0 +1,11 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}New Ordonnance{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une nouvelle Ordonnance</h1>
+
+    {{ include('ordonnance/_form.html.twig') }}
+
+    <a href="{{ path('app_ordonnance_index') }}">back to list</a>
+{% endblock %}

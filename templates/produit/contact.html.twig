@@ -1,0 +1,24 @@
+{% extends 'acceilfarm.html.twig' %}
+
+{% block title %}Contact!{% endblock %}
+
+{% block body %}
+    <form>
+    {{ form_start(form) }}
+
+        <div class="form-group">
+            <label for="Email">Email address</label>
+            {{ form_widget (form.Email,{'attr':{'class':'form-control'}}) }}
+
+        </div>
+
+        <div class="form-group">
+            <label for="Message">Example textarea</label>
+            {{ form_widget (form.Message,{'attr':{'class':'form-control'}}) }}
+
+        </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+    {{ form_end(form) }}
+    </form>
+{% endblock %}

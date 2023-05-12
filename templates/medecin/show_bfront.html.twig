@@ -1,0 +1,54 @@
+{% extends 'acceilpatient.html.twig' %}
+
+{% block title %}Medecin index{% endblock %}
+
+{% block body %}
+    <h1>Medecin List</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+              <th>IdMed</th>
+               <th>name</th>
+                  <th>prename</th>
+                  <th>age</th>
+                <th>adresse</th>
+                <th>gender</th>
+                <th>password</th>
+                <th>mail</th>
+                <th>birthday</th>
+                <th>phone number</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medecin in medecins %}
+            <tr>
+                <td>{{ medecin.idMed }}</td>
+                  <td>{{ medecin.nomMed }}</td>
+                <td>{{ medecin.prenomMed }}</td>
+                 <td>{{ medecin.ageMed }}</td>
+                <td>{{ medecin.adresseMed }}</td>
+                <td>{{ medecin.genreMed }}</td>
+                <td>{{ medecin.mdpMed }}</td>
+                <td>{{ medecin.emailMed }}</td>
+                <td>{{ medecin.dateNaissanceMed ? medecin.dateNaissanceMed|date('Y-m-d') : '' }}</td>
+                <td>{{ medecin.numTelMed }}</td>
+           <td>
+                    <a href="{{ path('app_medecin_show', {'idMed': medecin.idMed}) }}">show</a>
+                    <a href="{{ path('app_medecin_edit', {'idMed': medecin.idMed}) }}">edit</a>
+
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_medecin_new') }}">Create new</a>
+
+{% endblock %}

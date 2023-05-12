@@ -1,0 +1,52 @@
+<div class="col-xl-6 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"></h4>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="basic-form">
+               <form>
+            <div class="row">
+        <div class="mb-3 col-md-6">
+        <label class="form-label" >Nom </label>
+         {{ form_widget (form.nomPatient,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="mb-3 col-md-6">
+         <label class="form-label">PRENOM </label>
+         {{ form_widget (form.prenomPatient,{'attr':{'class':'form-control'}}) }}
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">mail </label>
+         {{ form_widget (form.emailPatient,{'attr':{'class':'form-control'}}) }}
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">adresse </label>
+         {{ form_widget (form.adressPatient,{'attr':{'class':'form-control'}}) }}
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">numero telephone</label>
+         {{ form_widget (form.numtelPatient,{'attr':{'class':'form-control'}}) }}
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">mot de passe </label>
+         {{ form_widget (form.motdepasselPatient,{'attr':{'class':'form-control'}}) }}
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">age </label>
+         {{ form_widget (form.agePatient,{'attr':{'class':'form-control'}}) }}
+        </div>
+         <div class="mb-3 col-md-6">
+         <label class="form-label">genre </label>
+         {{ form_widget (form.gendrePatient,{'attr':{'class':'form-control'}}) }}
+        </div>
+            </div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
+  </form>
+                </div>
+            </div>
+
+        </div>
+    </div>

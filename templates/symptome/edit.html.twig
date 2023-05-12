@@ -1,0 +1,16 @@
+{% extends 'acceilpatient.html.twig' %}
+
+{% block title %}Edit Symptome{% endblock %}
+
+{% block body %}
+    <h1>Edit Symptome</h1>
+
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Update') }}</button>
+    {{ form_end(form) }}
+    <a href="{{ path('app_symptome_index') }}">back to list</a>
+
+    {{ include('symptome/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'acceilwithoutlogin.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+<div class="example-wrapper">
+
+<div>  are you a </div>
+
+	
+			 <form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+ 
+  <select  id="ddlViewBy" class="form-select" aria-label="Default select example">
+  <option selected>vous êtes un  </option>
+  <option value="1">medcin</option>
+  <option value="2">pharmacien</option>
+  <option value="3">pacient</option>
+    <option value="4">admin</option>
+</select> <br>
+  <button type="submit" class="btn btn-primary" onclick=redirect() >Submit</button>	  
+</form>
+		
+	<script type="text/javascript" language="javascript">
+function redirect()
+{
+     var e = document.getElementById("ddlViewBy");
+     var strUser = e.value;
+     if(strUser=='3'){ 
+      console.log('hii')
+  //   window.location.href()
+     window.history.pushState('page2', 'Title', '/patient/home');
+        }else if(strUser=='2'){
+   window.history.pushState('page2', 'Title', '/pharmacien/tohomepharm');
+        } else if (strUser=='1'){
+               window.history.pushState('page2', 'Title', '/medecin/home');
+        } else if (strUser=='4'){
+               window.history.pushState('page2', 'Title', '/homeadmin');
+        }
+   
+}
+</script>		  
+</div>
+{% endblock %}

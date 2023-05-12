@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_medecin_block', {'idMed': medecin.idMed}) }}" onsubmit="return confirm('Are you sure you want to block this user?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('bloc' ~ medecin.idMed) }}">
+    <button class="btn">bloc</button>
+</form>

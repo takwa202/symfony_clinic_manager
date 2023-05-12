@@ -1,0 +1,67 @@
+{% extends 'acceiladmin.html.twig' %}
+
+{% block title %}Medecin{% endblock %}
+
+{% block body %}
+    <h1>Medecin</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdMed</th>
+                <td>{{ medecin.idMed }}</td>
+            </tr>
+             <tr>
+                <th>nom</th>
+                <td>{{ medecin.nomMed }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ medecin.prenomMed }}</td>
+            </tr>
+             <tr>
+                <th> age</th>
+                <td>{{ medecin.ageMed }}</td>
+            </tr>
+            <tr>
+                <th>Emai</th>
+                <td>{{ medecin.emailMed }}</td>
+            </tr>
+            <tr>
+                <th>password</th>
+                <td>{{ medecin.mdpMed }}</td>
+            </tr>
+            
+            <tr>
+                <th>Date de Naissance </th>
+                <td>{{ medecin.dateNaissanceMed ? medecin.dateNaissanceMed|date('Y-m-d') : '' }}</td>
+            </tr>
+           
+            <tr>
+                <th>Adresse</th>
+                <td>{{ medecin.adresseMed }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ medecin.genreMed }}</td>
+            </tr>
+           
+            
+            <tr>
+                <th>numero de telephone</th>
+                <td>{{ medecin.numTelMed }}</td>
+            </tr>
+          
+           
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_medecin_index') }}">back to list</a>
+
+    <a href="{{ path('app_medecin_edit', {'idMed': medecin.idMed}) }}">edit</a>
+
+    {{ include('medecin/_bloc_form.html.twig') }}
+{{ include('medecin/_unbloc_form.html.twig') }}
+    {{ include('medecin/_delete_form.html.twig') }}
+{% endblock %}

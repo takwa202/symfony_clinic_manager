@@ -1,0 +1,57 @@
+{% extends 'acceilpatient.html.twig' %}
+
+{% block title %}Symptome index{% endblock %}
+
+{% block body %}
+    <h1>Symptome index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdSym</th>
+                <th>Fievre</th>
+                <th>Toux</th>
+                <th>Fatigue</th>
+                <th>DouleurMusculaire</th>
+                <th>MalDeGorge</th>
+                <th>Essouflement</th>
+                <th>PerteDAppetit</th>
+                <th>EcoulementNasal</th>
+                <th>Nausee</th>
+                <th>Vomissement</th>
+                <th>MalDeTete</th>
+                <th>Autre</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for symptome in symptomes %}
+            <tr>
+                <td>{{ symptome.idSym }}</td>
+                <td>{{ symptome.fievre ? 'Yes' : 'No' }}</td>
+                <td>{{ symptome.toux }}</td>
+                <td>{{ symptome.fatigue }}</td>
+                <td>{{ symptome.douleurMusculaire }}</td>
+                <td>{{ symptome.malDeGorge }}</td>
+                <td>{{ symptome.essouflement }}</td>
+                <td>{{ symptome.perteDAppetit }}</td>
+                <td>{{ symptome.ecoulementNasal }}</td>
+                <td>{{ symptome.nausee }}</td>
+                <td>{{ symptome.vomissement }}</td>
+                <td>{{ symptome.malDeTete }}</td>
+                <td>{{ symptome.autre }}</td>
+                <td>
+                    <a href="{{ path('app_symptome_show', {'idSym': symptome.idSym}) }}">show</a>
+                    <a href="{{ path('app_symptome_edit', {'idSym': symptome.idSym}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_symptome_new') }}">Create new</a>
+{% endblock %}

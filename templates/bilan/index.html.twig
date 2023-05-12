@@ -1,0 +1,40 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}Bilan index{% endblock %}
+
+{% block body %}
+    <div style="background-color : #FFC0CB"> <h1>Bilan</h1> </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Type</th>
+                <th>DateBilan</th>
+                <th>Conclusion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bilan in bilans %}
+            <tr>
+
+                <td>{{ bilan.type }}</td>
+                <td>{{ bilan.dateBilan ? bilan.dateBilan|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bilan.conclusion }}</td>
+                <td>
+                    <button type="button" class="btn btn-light"><a href="{{ path('app_bilan_show', {'idBilan': bilan.idBilan}) }}">Afficher</a></button>
+
+                    <button type="button" class="btn btn-light"><a href="{{ path('app_bilan_edit', {'idBilan': bilan.idBilan}) }}">Modifier</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <button name="button"><a href="{{ path('app_bilan_new') }}">Ajouter un nouveau bilan</a></button>
+
+{% endblock %}

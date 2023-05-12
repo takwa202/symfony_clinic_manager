@@ -1,0 +1,24 @@
+{% extends 'acceilfarm.html.twig' %}
+{% block title%} Liste des Produits par prix{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.minPrice) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.maxPrice) }}
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}

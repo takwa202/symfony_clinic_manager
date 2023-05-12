@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pharmacien{% endblock %}
+
+{% block body %}
+    <h1>Pharmacien</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdPharmacien</th>
+                <td>{{ pharmacien.idPharmacien }}</td>
+            </tr>
+            <tr>
+                <th>NomPharmacien</th>
+                <td>{{ pharmacien.nomPharmacien }}</td>
+            </tr>
+            <tr>
+                <th>PrenomPharmacien</th>
+                <td>{{ pharmacien.prenomPharmacien }}</td>
+            </tr>
+            <tr>
+                <th>AdressPharmacien</th>
+                <td>{{ pharmacien.adressPharmacien }}</td>
+            </tr>
+            <tr>
+                <th>NumtelPharmacien</th>
+                <td>{{ pharmacien.numtelPharmacien }}</td>
+            </tr>
+            <tr>
+                <th>MotdepassePharmacien</th>
+                <td>{{ pharmacien.motdepassePharmacien }}</td>
+            </tr>
+            <tr>
+                <th>EmailPharmacien</th>
+                <td>{{ pharmacien.emailPharmacien }}</td>
+            </tr>
+            <tr>
+                <th>Blockfarm</th>
+                <td>{{ pharmacien.blockfarm ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Picturepharm</th>
+                <td>{{ pharmacien.picturepharm }}</td>
+            </tr>
+            <tr>
+                <th>Nbrreclamation</th>
+                <td>{{ pharmacien.nbrreclamation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pharmacien_index') }}">back to list</a>
+
+    <a href="{{ path('app_pharmacien_edit', {'idPharmacien': pharmacien.idPharmacien}) }}">edit</a>
+
+    {{ include('pharmacien/_delete_form.html.twig') }}
+{% endblock %}

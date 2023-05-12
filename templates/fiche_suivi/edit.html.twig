@@ -1,0 +1,13 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}Edit FicheSuivi{% endblock %}
+
+{% block body %}
+    <h1>Modifier FicheSuivi</h1>
+
+    {{ include('fiche_suivi/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_fiche_suivi_index') }}">retour à la liste d'affichage</a>
+
+    {{ include('fiche_suivi/_delete_form.html.twig') }}
+{% endblock %}

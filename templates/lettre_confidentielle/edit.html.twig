@@ -1,0 +1,13 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}Edit LettreConfidentielle{% endblock %}
+
+{% block body %}
+    <h1>Modifier LettreConfidentielle</h1>
+
+    {{ include('lettre_confidentielle/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_lettre_confidentielle_index') }}">back to list</a>
+
+    {{ include('lettre_confidentielle/_delete_form.html.twig') }}
+{% endblock %}

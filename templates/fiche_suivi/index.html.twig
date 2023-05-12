@@ -1,0 +1,52 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}FicheSuivi{% endblock %}
+
+{% block body %}
+    <h1>Liste des FichesSuivi</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdFiche</th>
+                <th>IdBilan</th>
+                <th>IdPatient</th>
+                <th>Diagnostic</th>
+                <th>ConsigneMedicale</th>
+                <th>NomPatient</th>
+                <th>PrénomPatient</th>
+                <th>TypeBilan</th>
+                <th>DateBilan</th>
+                <th>ConclusionBilan</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_suivi in fiche_suivis %}
+            <tr>
+                <td>{{ fiche_suivi.idFiche }}</td>
+                <td>{{ fiche_suivi.bilan.idBilan }}</td>
+                <td>{{ fiche_suivi.idClient.idPatient }}</td>
+                <td>{{ fiche_suivi.diagnostic }}</td>
+                <td>{{ fiche_suivi.consigneMedicale }}</td>
+                <td>{{ fiche_suivi.idClient.nomPatient}}</td>
+                <td>{{ fiche_suivi.idClient.prenomPatient}}</td>
+                <td>{{ fiche_suivi.bilan.type}}</td>
+                <td>{{ fiche_suivi.bilan.getDateBilanstring}}</td>
+                <td>{{ fiche_suivi.bilan.conclusion}}</td>
+
+                <td>
+                    <a href="{{ path('app_fiche_suivi_show', {'idFiche': fiche_suivi.idFiche}) }}">Afficher</a>
+                    <a href="{{ path('app_fiche_suivi_edit', {'idFiche': fiche_suivi.idFiche}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_suivi_new') }}">Ajouter une nouvelle fiche</a>
+{% endblock %}

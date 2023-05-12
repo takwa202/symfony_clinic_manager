@@ -1,0 +1,11 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}New LettreConfidentielle{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une nouvelle LettreConfidentielle</h1>
+
+    {{ include('lettre_confidentielle/_form.html.twig') }}
+
+    <a href="{{ path('app_lettre_confidentielle_index') }}">back to list</a>
+{% endblock %}

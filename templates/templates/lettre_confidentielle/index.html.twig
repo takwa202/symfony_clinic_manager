@@ -1,0 +1,43 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}LettreConfidentielle index{% endblock %}
+
+{% block body %}
+    <h1>Liste des lettres confidentielles</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idconf</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Signature</th>
+                <th>Nom et Prénom du patient</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lettre_confidentielle in lettre_confidentielles %}
+            <tr>
+                <td>{{ lettre_confidentielle.idconf }}</td>
+                <td>{{ lettre_confidentielle.date ? lettre_confidentielle.date|date('Y-m-d') : '' }}</td>
+                <td>{{ lettre_confidentielle.description }}</td>
+                <td>{{ lettre_confidentielle.signature }}</td>
+                <td>{{ lettre_confidentielle.idOrdonnance.nomprenompatient }}</td>
+                <td>
+                    <a href="{{ path('app_lettre_confidentielle_show', {'idconf': lettre_confidentielle.idconf}) }}">show</a>
+                    <a href="{{ path('app_lettre_confidentielle_edit', {'idconf': lettre_confidentielle.idconf}) }}">edit</a>
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_lettre_confidentielle_new') }}">Create new</a>
+{% endblock %}

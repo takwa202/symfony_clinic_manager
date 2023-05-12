@@ -1,0 +1,11 @@
+{% extends 'acceilmed.html.twig' %}
+
+{% block title %}New FicheSuivi{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une nouvelle FicheSuivi</h1>
+
+    {{ include('fiche_suivi/_form.html.twig') }}
+
+    <a href="{{ path('app_fiche_suivi_index') }}">retour à la liste d'affichage</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}LettreConfidentielle{% endblock %}
+
+{% block body %}
+    <h1> Lettre Confidentielle</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Date</th>
+                <td>{{ lettre_confidentielle.date ? lettre_confidentielle.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ lettre_confidentielle.description }}</td>
+            </tr>
+            <tr>
+                <th>Signature</th>
+                <td>{{ lettre_confidentielle.signature }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_lettre_confidentielle_index') }}">back to list</a>
+
+    <a href="{{ path('app_lettre_confidentielle_edit', {'idconf': lettre_confidentielle.idconf}) }}">edit</a>
+
+    {{ include('lettre_confidentielle/_delete_form.html.twig') }}
+{% endblock %}
